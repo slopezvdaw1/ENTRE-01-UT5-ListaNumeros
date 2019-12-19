@@ -114,8 +114,16 @@ public class ListaNumeros
      */
     public String toString() 
     {
-        
-        return null;
+        String str = "|";
+        if (pos == 0) {
+            str += "|";
+        }
+        else {
+            for (int i = 0; i < pos; i++) {
+                str += numeros[i] + "|";
+            }
+        }
+        return str;
     }
 
     /**

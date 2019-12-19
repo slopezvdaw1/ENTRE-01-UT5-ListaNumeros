@@ -153,8 +153,8 @@ public class ListaNumeros
         int cuantos = 0;//cuántos elementos tiene el expandido
         
         for (int i = 0; i < pos; i += 2) { //recorriendo 1er array
-            cuantos += numeros[i];
-            //helpmeplease;
+            cuantos += numeros[i]; //cuenta solo los nº en pos. par
+            
         }
         
         int[] expandido = new int[cuantos];
@@ -162,8 +162,8 @@ public class ListaNumeros
         for (int i = 0; i < pos; i++) {
             if (!esImpar(i)) {
                 int veces = 0;
-                while (veces < numeros[i]) {
-                    expandido[i + veces] = numeros[i + 1];
+                while (veces < numeros[i]) {//numeros[i] es el nº de veces q se repite
+                    expandido[i + veces] = numeros[i + 1]; //numeros[i+1] = nº q se repite
                     veces++;
                 }
             }
@@ -291,7 +291,7 @@ public class ListaNumeros
         System.out.println("Original: " + numeros.toString());
         int[] expandido = numeros.expandir();
         System.out.println("Expandido: " + Arrays.toString(expandido));
-        // seguir completando
+        // el resto los he probado con la FX
         
         
         

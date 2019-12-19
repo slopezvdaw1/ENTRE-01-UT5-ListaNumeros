@@ -151,15 +151,40 @@ public class ListaNumeros
             throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
         }
         int cuantos = 0;
-        int[] helpmeplease = new int[pos/2]; //guarda los valores a repetir
+        
         for (int i = 0; i < pos; i += 2) { //recorriendo 1er array
             cuantos += numeros[i];
-            
+            //helpmeplease;
         }
+        
         int[] expandido = new int[cuantos];
         for (int i = 0; i < pos; i += 2) { //numeros[i] dice cuántas veces se repite
             for (int j = 0; j < numeros[i]; j++) {
                 expandido[j] = numeros[i + 1];
+            }
+        }
+        return expandido;
+    }
+    
+    public int[] expandir2() {
+        if(esImpar(pos)) {
+            throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
+        }
+        int cuantos = 0;
+        int [] aux = new int[pos];
+        for (int i = 0; i < pos; i++) {
+            if (!esImpar(i)) {
+                cuantos += numeros[i];
+            }
+            else {
+                aux[i] = numeros[i];
+            }
+            
+        }
+        int [] expandido = new int[cuantos];
+        for (int i = 0; i < pos; i++) { //original
+            if (!esImpar(i)) {
+                
             }
         }
         return expandido;
@@ -183,7 +208,17 @@ public class ListaNumeros
      *  después de reorganizarParesImpares() quedaría {4, 2, 8, 3, 7, 9, 5, 11, 13}
      */
     public void reorganizarParesImpares() {
-         
+        int posPar = 0;//posición del siguiente par
+        
+        for (int i = 0; i < pos; i++) {
+            if (!esImpar(numeros[i])) {
+                for (int j = posPar + 1; j < pos; j++) {
+                    numeros[j + 1] = numeros[j];
+                }
+                numeros[posPar] = numeros[i];
+                posPar++;
+            }
+        }                
 
     }
 

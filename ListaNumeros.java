@@ -97,7 +97,11 @@ public class ListaNumeros
      */
     public boolean estaElemento(int numero) 
     {
-        
+        for (int i = 0; i < pos; i++) {
+            if (numeros[i] == numero) {
+                return true;
+            }
+        }        
         return false;
     }
 

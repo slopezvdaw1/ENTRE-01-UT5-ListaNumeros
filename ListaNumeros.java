@@ -147,9 +147,22 @@ public class ListaNumeros
      * (ver detalles en el enunciado)
      */
     public int[] expandir() {
-         
-
-        return null;
+        if(esImpar(pos)) {
+            throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
+        }
+        int cuantos = 0;
+        int[] helpmeplease = new int[pos/2]; //guarda los valores a repetir
+        for (int i = 0; i < pos; i += 2) { //recorriendo 1er array
+            cuantos += numeros[i];
+            
+        }
+        int[] expandido = new int[cuantos];
+        for (int i = 0; i < pos; i += 2) { //numeros[i] dice cuántas veces se repite
+            for (int j = 0; j < numeros[i]; j++) {
+                expandido[j] = numeros[i + 1];
+            }
+        }
+        return expandido;
     }
 
     /**
@@ -183,8 +196,13 @@ public class ListaNumeros
      *  que incluya los elementos del array ordenado
      */
     public ListaNumeros nuevaLista() {
-         
-        return null;
+        int[] copia = Arrays.copyOf(numeros, numeros.length);
+        Arrays.sort(copia);
+        ListaNumeros listaListilla = new ListaNumeros(copia.length);
+        for (int i = 0; i < copia.length; i++) {
+            boolean elemento = listaListilla.addElemento(copia[i]);
+        }
+        return listaListilla;
 
     }
 
@@ -201,8 +219,17 @@ public class ListaNumeros
      */
     public int[][] toArray2D() 
     {
-        
-        return null;
+        int[][] bidimensional = new int[4][4];
+        int posicion = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (posicion < pos) {    
+                    bidimensional[i][j] = numeros[posicion];
+                    posicion++;
+                }
+            }
+        }
+        return bidimensional;
     }
 
     /**

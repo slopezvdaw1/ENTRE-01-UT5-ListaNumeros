@@ -217,7 +217,7 @@ public class ListaNumeros
         
         for (int i = 0; i < pos; i++) {
             if (!esImpar(numeros[i])) {
-                for (int j = posPar + 1; j < pos; j++) {
+                for (int j = posPar - 1; j >= posPar; j--) {
                     numeros[j + 1] = numeros[j];
                 }
                 numeros[posPar] = numeros[i];

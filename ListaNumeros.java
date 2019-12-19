@@ -150,7 +150,7 @@ public class ListaNumeros
         if(esImpar(pos)) {
             throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
         }
-        int cuantos = 0;
+        int cuantos = 0;//cuántos elementos tiene el expandido
         
         for (int i = 0; i < pos; i += 2) { //recorriendo 1er array
             cuantos += numeros[i];
@@ -158,37 +158,42 @@ public class ListaNumeros
         }
         
         int[] expandido = new int[cuantos];
-        for (int i = 0; i < pos; i += 2) { //numeros[i] dice cuántas veces se repite
-            for (int j = 0; j < numeros[i]; j++) {
-                expandido[j] = numeros[i + 1];
+        
+        for (int i = 0; i < pos; i++) {
+            if (!esImpar(i)) {
+                int veces = 0;
+                while (veces < numeros[i]) {
+                    expandido[i + veces] = numeros[i + 1];
+                    veces++;
+                }
             }
         }
         return expandido;
     }
     
-    public int[] expandir2() {
-        if(esImpar(pos)) {
-            throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
-        }
-        int cuantos = 0;
-        int [] aux = new int[pos];
-        for (int i = 0; i < pos; i++) {
-            if (!esImpar(i)) {
-                cuantos += numeros[i];
-            }
-            else {
-                aux[i] = numeros[i];
-            }
+    // public int[] expandir2() {
+        // if(esImpar(pos)) {
+            // throw new RuntimeException("Nº impar de elementos en el array, añadauno más");
+        // }
+        // int cuantos = 0;
+        // int [] aux = new int[pos];
+        // for (int i = 0; i < pos; i++) {
+            // if (!esImpar(i)) {
+                // cuantos += numeros[i];
+            // }
+            // else {
+                // aux[i] = numeros[i];
+            // }
             
-        }
-        int [] expandido = new int[cuantos];
-        for (int i = 0; i < pos; i++) { //original
-            if (!esImpar(i)) {
+        // }
+        // int [] expandido = new int[cuantos];
+        // for (int i = 0; i < pos; i++) { //original
+            // if (!esImpar(i)) {
                 
-            }
-        }
-        return expandido;
-    }
+            // }
+        // }
+        // return expandido;
+    //}
 
     /**
      * @param valor el nº a analizar
@@ -235,7 +240,7 @@ public class ListaNumeros
         Arrays.sort(copia);
         ListaNumeros listaListilla = new ListaNumeros(copia.length);
         for (int i = 0; i < copia.length; i++) {
-            boolean elemento = listaListilla.addElemento(copia[i]);
+            listaListilla.addElemento(copia[i]);
         }
         return listaListilla;
 

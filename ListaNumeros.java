@@ -58,7 +58,7 @@ public class ListaNumeros
      */
     public boolean estaCompleta()
     {
-        return true;
+        return pos == numeros.length;
 
     }
 
@@ -67,7 +67,7 @@ public class ListaNumeros
      */
     public boolean estaVacia() 
     {
-        return true;
+        return pos == 0;
 
     }
 
@@ -76,7 +76,7 @@ public class ListaNumeros
      */
     public int getTotalNumeros()
     {
-        return 0;
+        return pos;
 
     }
 
@@ -85,7 +85,10 @@ public class ListaNumeros
      */
     public void vaciarLista() 
     {
-        
+        for (int i = 0; i < pos; i++) {
+            numeros[i] = 0;
+        }
+        pos = 0;
     }
 
     /**

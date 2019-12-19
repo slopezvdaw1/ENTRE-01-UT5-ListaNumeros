@@ -1,12 +1,12 @@
-
+import java.util.Arrays;
 /**
  * La clase encapsula en un array
  * una lista de numeros
  * 
- * @author - 
+ * @author - Sara López Vicente
  * 
  */
-import java.util.Arrays;
+
 
 public class ListaNumeros 
 {
@@ -26,7 +26,8 @@ public class ListaNumeros
         if (n > TAM_LISTA) {
             throw new IllegalArgumentException("Valor no permitido para tamaño lista");
         }
-        // completar
+        numeros = new int[n];
+        pos = 0;
     }
 
     /**
@@ -38,8 +39,17 @@ public class ListaNumeros
      */
     public boolean addElemento(int numero)
     {
-        
-        return true;
+        if (pos < numeros.length) {
+            for (int i = 0; i < pos; i++) {
+                if (numeros[i] == numero) {
+                    return false;
+                }
+            }
+            numeros[pos] = numero;
+            pos++;
+            return true;
+        }
+        return false;
 
     }
 
